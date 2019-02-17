@@ -4,19 +4,14 @@ node_js:
 cache: npm
 services:
   -postgresql
-<<<<<<< HEAD
 before_script:
-  - psql -c "create database fs_travis;" -U postgres
-=======
-  before_script:
-  - psql -c "create database powergrid_travis;" -U postgres
->>>>>>> adc7108e7cee88c3eb3e1dac587e18f85abb98dc
+  - psql -c "create database fantasy_sailing_travis;" -U postgres
   - knex migrate:latest
 script:
   - npm test
   - npm run lint
 env:
-  - NODE_ENV=test DATABASE_URL=postgres://localhost/fs_travis JWT_SECRET=SECRETSANTA
+  - NODE_ENV=test DATABASE_URL=postgres://localhost/fantasy_sailing_travis JWT_SECRET=SECRETSANTA
 branches:
   only:
     - develop
