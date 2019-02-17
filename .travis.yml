@@ -2,6 +2,16 @@ language: node_js
 node_js:
     - 9.3.0
 cache: npm
+services:
+  -postgresql
+  before_script:
+  - psql -c "create database powergrid_travis;" -U postgres
+  - knex migrate:latest
 script:
   - npm test
   - npm run lint
+env:
+  - NODE_ENV=test DATABASE_URL=postgres://localhost/fs_travis JWT_SECRET=SECRETSANTA
+branches:
+  only:
+    - develop
