@@ -4,7 +4,7 @@ node_js:
 cache: npm
 services:
   -postgresql
-  before_script:
+before_script:
   - psql -c "create database powergrid_travis;" -U postgres
   - knex migrate:latest
 script:
