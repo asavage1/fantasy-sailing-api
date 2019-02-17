@@ -3,21 +3,23 @@ node_js:
 - 9.3.0
 cache: npm
 deploy:
+  provider: heroku
   api_key:
     secure: Zk5ub/WY+BX7wklzID0KMxzYj6G7aBf0q7dQs81dnxZjwrtKFYFXZr7v98KmY6YrQyR8VwKaTNP/dNKPcGS5C73eZNeOyMBg+5Ol66Vt/NoJtcFlYpwFKZ36L/ySLQceyDz7O0AkTyYSJJayxTdASVwU2VO8g0P85Q/x395ZVuA1HIOSn7JFPS66OTbdMck5SLOf14BTa4wCNRjjrRYpZ3FVBdpbCNsO46cfw4b8hQRaK+ZnTFXNF+zwXF9GuElV+Vnc3lbpkg4caeqiqR02Ur657N5JLXEhs6W57xKtonQVCBYfd4T1TDfOi7G2iWuROLPMFoQV0imKLcw5FLC1qlThvX2tQL4q8XAJQVgupBgtknRsFAaTx7JeybhSZBTBchdB9omhOpx4jBW0VA03swWuUkxKJUVuZhFeD4EfddIp8THNFfWewjTZqX6bYCT1BCFLAwPc7czIjfDBJ9/BbtxuVirxbmJH/L5MhbUKGXWoAlH82Y1byD8LUUDlVmOIwvjCCu0dFvJ+q7K/FjtZ3MyMUxVbAzMoRHpSXnQOxyeBzrPx0wggiv4WwG1sYoZr25wMr7U+YOxrCnA20dUV700M1CxovizrhrEs23c4NMZVy85HxqqikNb6dHc+rzqi2cx51AvaKeoAciwicYI8VS/XGYg53BJdjkHKywLsTDw=
   app: fantasy-sailing
   on:
     repo: asavage1/fantasy-sailing-api
     branch: develop
-services: "-postgresql"
+services:
+  -postgresql
 before_script:
-- psql -c "create database fantasy_sailing_travis;" -U postgres
-- knex migrate:latest
+  - psql -c "create database fantasy_sailing_travis;" -U postgres
+  - knex migrate:latest
 script:
 - npm test
 - npm run lint
 env:
-- NODE_ENV=test DATABASE_URL=postgres://localhost/fantasy_sailing_travis JWT_SECRET=SECRETSANTA
+  - NODE_ENV=test DATABASE_URL=postgres://localhost/fantasy_sailing_travis JWT_SECRET=SECRETSANTA
 branches:
   only:
   - develop
