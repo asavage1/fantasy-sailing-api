@@ -1,0 +1,37 @@
+{
+  "name": "fantasy-sailing-api",
+  "version": "1.0.0",
+  "description": "server side api for fantasy-sailing app",
+  "main": "index.js",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "bluebird": "^3.5.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "knex": "^0.15.2",
+    "pg": "^7.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "pre-commit": "^1.2.2",
+    "supertest": "^3.4.2"
+  },
+  "scripts": {
+    "test": "mocha tests/ex_test.js --exit",
+    "start": "node index.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asavage1/fantasy-sailing-api.git"
+  },
+  "author": "Andrew Savage, Cam Holley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asavage1/fantasy-sailing-api/issues"
+  },
+  "homepage": "https://github.com/asavage1/fantasy-sailing-api#readme"
+}
