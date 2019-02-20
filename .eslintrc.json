@@ -42,6 +42,7 @@
           "error",
           "always"
         ],
-        "key-spacing": ["error"]
+        "key-spacing": ["error"],
+        "no-console": ["warn"]
     }
 }
