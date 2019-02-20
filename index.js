@@ -13,5 +13,6 @@ app.use(function(req, res, next) {
 	next();
 });
 app.get("/", (req, res) => res.send("Hello World!"));
+app.use("/users", require("./routes/users")(knex));
 
 module.exports = { app, knex };
